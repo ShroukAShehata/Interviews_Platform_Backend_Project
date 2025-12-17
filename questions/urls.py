@@ -7,7 +7,6 @@ router = DefaultRouter()
 router.register(r'skills', SkillViewSet, basename='skills')
 router.register(r'questions', QuestionViewSet, basename='questions')
 router.register(r'answers', AnswerViewSet, basename='answers')
-#router.register(r'study-plans', StudyPlanViewSet, basename='study-plans')
 
 router.register(r'analytics', AnalyticsViewSet, basename='analytics')
 

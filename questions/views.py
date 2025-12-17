@@ -117,15 +117,6 @@ class AnswerViewSet(viewsets.ModelViewSet):
 
 
 
-'''
-# Study Plans
-class StudyPlanViewSet(viewsets.ModelViewSet):
-    queryset = StudyPlan.objects.all()
-    serializer_class = StudyPlanSerializer
-
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
-'''
 
 #_____________________________________  Analytics ____________________________________________#
 
@@ -134,7 +125,6 @@ class StudyPlanViewSet(viewsets.ModelViewSet):
     top_questions=extend_schema(tags=["Analytics"]),
     trending_questions=extend_schema(tags=["Analytics"]),
     skills_heatmap=extend_schema(tags=["Analytics"]),
-    #user_progress=extend_schema(tags=["Analytics"])
 )
 class AnalyticsViewSet(viewsets.ViewSet):
     permission_classes = [IsAuthenticated]
@@ -159,15 +149,4 @@ class AnalyticsViewSet(viewsets.ViewSet):
         data = AnalyticsService.skills_heatmap()
         return Response(data)
 
-    '''
-    @action(detail=False, methods=["get"], url_path="user-progress")
-    def user_progress(self, request):
-        user_id = request.query_params.get("user_id") or \
-                  (request.user.id if request.user.is_authenticated else None)
-
-        if not user_id:
-            return Response({"detail": "Authentication required or provide user_id"}, status=400)
-
-        data = AnalyticsService.user_progress(user_id)
-        return Response(data)
-    '''
+ 

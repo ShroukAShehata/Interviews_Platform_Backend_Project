@@ -22,17 +22,3 @@ class AnswerService:
             raise PermissionDenied("Only experts can answer")
         return Answer.objects.create(author=user, question=question, content=content)
 
-'''
-class StudyPlanService:
-    @staticmethod
-    def add_question_to_plan(plan, question):
-        item, created = StudyPlanItem.objects.get_or_create(plan=plan, question=question)
-        return item
-
-    @staticmethod
-    def mark_item_complete(item):
-        item.is_completed = True
-        item.completed_at = timezone.now()
-        item.save()
-        return item
-'''
